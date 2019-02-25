@@ -1,0 +1,37 @@
+<div class="container">
+
+
+  <h2 class="page-header">Register</h2>
+  <form (submit)="onRegisterSubmit()" >
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" id="firstName" placeholder="Enter First Name">
+    </div>
+    <div class="form-group">
+      <label for="username">Last Name</label>
+      <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder=" Enter Password">
+    </div>
+    
+    <!-- <div class="form-group">
+        <label for="profilephoto">Upload your photo</label>
+        <input type="file" [(ngModel)]="profilephoto" name="profilephoto" class="form-control" id="profilephoto" placeholder="Upload profile photo">
+      </div>
+     -->
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+     <!-- <a class="btn btn-primary" 	href="http://localhost:8080/user/auth/facebook">Login With Facebook</a> 
+     <a class="btn btn-primary" 	href="http://localhost:8080/user/auth/google">Login With google</a> -->
+  </form>
+
+</div>
+
+

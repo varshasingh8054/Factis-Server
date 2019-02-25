@@ -1,0 +1,289 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: NodeBase
+  description: BaseProject
+
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: Authorization
+
+basePath: /api/
+tags:
+  - name: Users
+    description: The swagger API specification
+  - name: Examples
+    description: Simple example endpoints
+  - name: Specification
+    description: The swagger API specification  
+
+
+consumes:
+  - application/json
+produces:
+  - application/json
+  
+
+
+definitions:
+  SignupBody:
+    type: object
+    title: user
+    required:
+      - name
+    properties:
+      firstName:
+        type: string
+        example: FirstName
+      lastName:
+        type: string
+        example: LastName
+      email:
+        type: string
+        example: email
+      password:
+        type: string
+        example: password
+  LoginBody:
+    type: object
+    title: user
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: email
+      password:
+        type: string
+        example: password
+  resetPasswordBody:
+    type: object
+    title: user
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: email
+      verificationCode:
+        type: object
+        example: email
+      password:
+        type: string
+        example: password
+  forgotPasswordBody:
+    type: object
+    title: user
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: email
+  adminResetPasswordBody:
+    type: object
+    title: user
+    required:
+      - email
+      - password
+    properties:
+      token:
+        type: object
+        example: email
+      password:
+        type: string
+        example: password
+
+paths:
+  /users/register:
+    get:
+      tags:
+        - Examples
+      required: true
+      description: Fetch all examples
+      responses:
+        200:
+          description: Returns all examples
+    post:
+      tags:
+        - Users
+      description: Create a new user
+      parameters:
+        - name: user
+          in: body
+          description: an user signup
+          required: true
+          schema: 
+            $ref: "#/definitions/SignupBody"
+      responses:
+        200:
+          description: Returns all examples
+  /users/login:
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the example to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the example with the specified id
+        404:
+          description: Example not found
+    post:
+      tags:
+        - Users
+      description: User Login
+      parameters:
+        - name: user
+          in: body
+          description: an user signin
+          required: true
+          schema: 
+            $ref: "#/definitions/LoginBody"
+      responses:
+        200:
+          description: Returns all examples
+  /users/resetPassword:
+    post:      
+      tags:
+        - Users
+      description: User Reset Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user reset password
+          required: true
+          schema: 
+            $ref: "#/definitions/resetPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+  /users/changePassword:
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Users
+      description: User change Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user change password
+          required: true
+          schema: 
+            $ref: "#/definitions/resetPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+  /users/forgotPassword:
+    post:
+      tags:
+        - Users
+      description: User Forgot Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user forgot password
+          required: true
+          schema: 
+            $ref: "#/definitions/forgotPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+  /users/upload:
+     post:
+       summary: Uploads a file.
+       consumes:
+         - multipart/form-data
+       parameters:
+         - in: formData
+           name: upfile
+           type: file
+           description: The file to upload.
+
+
+  /admin/login:
+    post:
+      tags:
+        - Admin
+      description: User Login
+      parameters:
+        - name: user
+          in: body
+          description: an user signin
+          required: true
+          schema: 
+            $ref: "#/definitions/LoginBody"
+      responses:
+        200:
+          description: Returns all examples
+  /admin/resetPassword:
+    post:      
+      tags:
+        - Admin
+      description: User Reset Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user reset password
+          required: true
+          schema: 
+            $ref: "#/definitions/adminResetPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+  /admin/changePassword:
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Admin
+      description: User change Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user change password
+          required: true
+          schema: 
+            $ref: "#/definitions/resetPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+  /admin/forgotPassword:
+    post:
+      tags:
+        - Admin
+      description: User Forgot Passowrd      
+      parameters:
+        - name: user
+          in: body
+          description: an user forgot password
+          required: true
+          schema: 
+            $ref: "#/definitions/forgotPasswordBody"        
+      required: true
+      responses:
+        200:
+          description: Returns all examples
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
