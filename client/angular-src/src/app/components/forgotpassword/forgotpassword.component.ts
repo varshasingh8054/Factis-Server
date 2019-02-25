@@ -32,7 +32,7 @@ email : String;
         this.flashMessage.show("Reset password from mail", {cssClass: 'alert-success', timeout: 2000});
         this.router.navigate(['login']);
       } else {
-       this.flashMessage.show("email not find", {cssClass: 'alert-success', timeout: 2000});
+       this.flashMessage.show("email not find", {cssClass: 'alert-danger', timeout: 2000});
        //console.log("Error in email submit");
       }
   });

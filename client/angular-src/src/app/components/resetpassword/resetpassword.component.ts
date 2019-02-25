@@ -36,6 +36,7 @@ export class ResetpasswordComponent implements OnInit {
         this.flashMessage.show('Please login with new password', {cssClass: 'alert-success', timeout: 2000});
         this.router.navigate(['login']);
       } else {
+        this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 2000});
        console.log("In error resetpassword");
       }
     });

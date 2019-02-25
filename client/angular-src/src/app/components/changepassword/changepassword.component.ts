@@ -39,7 +39,7 @@ export class ChangepasswordComponent implements OnInit {
         this.flashMessage.show('Please login with new password', {cssClass: 'alert-success', timeout: 2000});
         this.router.navigate(['dashboard']);
       } else {
-        this.flashMessage.show(data.message, {cssClass: 'alert-success', timeout: 2000});
+        this.flashMessage.show(data.message, {cssClass: 'alert-danger', timeout: 2000});
         console.log("In error chnagepassword");
       }
     });
