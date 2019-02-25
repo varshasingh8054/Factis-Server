@@ -157,7 +157,8 @@ class Controller {
             if(token == usertoken)
             {
               localStorage.setItem('email1', req.params.email);
-              res.sendFile(path.join(__dirname, '../../public', 'reset.html'));
+//               res.sendFile(path.join(__dirname, '../../public', 'reset.html'));
+              res.redirect("http://localhost:4200/resetpassword");
             }
            } 
       }
